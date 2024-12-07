@@ -1,18 +1,33 @@
-import User from '../models/user.model.js';
+import User from '../models/user.model.js';  
 import bcryptjs from 'bcryptjs';
-import { errorHandler } from '../utils/error.js';
+
 
 export const signup = async (req, res, next) => {
-  const { username, emails, password } = req.body;
+  const { username, email, password } = req.body;
 
-  const hashedPassword = bcryptjs.hashSync(password, 10);
+  if (!email || !username || !password) {
+    return res.status(400).json({ success: false, message: "All fields are required" });
+  }
 
-  const newUser = new User({ username, emails, password: hashedPassword });
   try {
-    await newUser.save();
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: "Email already exists" });
+    }
 
-    res.status(201).json("User registered successfully!");
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+      return res.status(400).json({ success: false, message: "Username already exists" });
+    }
+
+    const hashedPassword = bcryptjs.hashSync(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
+
+
+    await newUser.save();
+    res.status(201).json({ success: true, message: "User created successfully!" });
+
   } catch (error) {
     next(error); 
-    }
+  }
 };
