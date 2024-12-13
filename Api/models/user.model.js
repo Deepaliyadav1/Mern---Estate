@@ -17,9 +17,9 @@ const userSchema = new mongoose.Schema({
   },
   avatar:{
     type: String,
-    default: "https://cdn3.pixelcut.app/7/18/profile_photo_maker_hero_100866f715.jpg"
-  },
-}, { timestamps: true }); // Properly closing the schema object with a bracket
+    default: "https://cdn3.pixelcut.app/7/18/647c1064ebf1c6171bfd3a87_profile_picture_feature_1_5d5a540273.webp",
+   },
+}, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
 
