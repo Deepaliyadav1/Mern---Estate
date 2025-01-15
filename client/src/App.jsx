@@ -1,3 +1,35 @@
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import Home from './assets/pages/Home';
+// import SignIn from './assets/pages/SignIn';
+// import SignUp from './assets/pages/SignUp';
+// import About from './assets/pages/About';
+// import Profile from './assets/pages/Profile';
+// import Header from './components/Header';
+// import PrivateRoute from './components/PrivateRoute';
+// import { SessionContextProvider } from '@supabase/auth-helpers-react';
+// import { supabase } from './supabaseClient';
+
+
+
+// export default function App() {
+//   return (
+
+//   <BrowserRouter>
+//   <Header />
+//   <Routes>
+//     <Route path='/' element={<Home/>} />
+//     <Route path='/sign-in' element={<SignIn/>} />
+//     <Route path='/sign-up' element={<SignUp/>} />
+//     <Route path='/about' element={<About/>} />
+//     <Route element={<PrivateRoute />}>
+//     <Route path='/profile' element={<Profile />} />
+//     </Route>
+//   </Routes>
+//   </BrowserRouter>
+
+//   );
+// }
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './assets/pages/Home';
 import SignIn from './assets/pages/SignIn';
@@ -8,18 +40,18 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
-  return (
-  <BrowserRouter>
-  <Header />
-  <Routes>
-    <Route path='/' element={<Home/>} />
-    <Route path='/sign-in' element={<SignIn/>} />
-    <Route path='/sign-up' element={<SignUp/>} />
-    <Route path='/about' element={<About/>} />
-    <Route element={<PrivateRoute />}>
-    <Route path='/profile' element={<Profile />} />
-    </Route>
-  </Routes>
-  </BrowserRouter>
-  );
+    return (
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/sign-in" element={<SignIn />} />
+                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/about" element={<About />} />
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/profile" element={<Profile />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+    );
 }
