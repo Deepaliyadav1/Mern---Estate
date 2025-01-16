@@ -24,7 +24,11 @@ export default function OAuth() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name: result.user.displayName, email: result.user.email, photo: result.user.photoURL}),
+                body: JSON.stringify({ 
+                    name: result.user.displayName, 
+                    email: result.user.email, 
+                    photo: result.user.photoURL,
+                 }),
             });
 
             console.log('Fetch response:', res);
